@@ -30,14 +30,14 @@ class User(db.Model):
             billAddress.append(j.serialize())
 
         return {
-            "user id": self.id,
+            "userid": self.id,
             "userFirstName": self.userFirstName,
             "userLastName": self.userLastName,
             "userName": self.userName,
             "email": self.email,
             "password": self.password,
             "addresses": addresses,  #call the empty array that was looped before the return
-            "Bill Address": billAddress
+            "billAddress": billAddress
         }
 
 class Product(db.Model):
@@ -60,7 +60,7 @@ class Product(db.Model):
         for i in self.pictureUrl:
             photo.append(i.serialize())
         return {
-            "Product id": self.id,
+            "ProductId": self.id,
             "ProductName": self.productName,
             "productDescription": self.productDescription,
             "productPrice": self.productPrice,
@@ -88,13 +88,13 @@ class Address(db.Model):
 
     def serialize(self):
         return {
-            "street id": self.id,
-            "User Street": self.userStreet,
-            "User Number": self.userNumber,
-            "User City": self.userCity,
-            "User State": self.userState,
-            "User Zip Code": self.userZipCode,
-            "Same as Billing Address": self.isBillingAddress,
+            "streetId": self.id,
+            "UserStreet": self.userStreet,
+            "UserNumber": self.userNumber,
+            "UserCity": self.userCity,
+            "UserState": self.userState,
+            "UserZipCode": self.userZipCode,
+            "Same_as_Billing_Address": self.isBillingAddress,
             "user": self.person_id
         }
 
@@ -115,11 +115,11 @@ class BillingAddress(db.Model):
 
     def serialize(self):
         return {
-            "Billing Street": self.billingStreet,
-            "Billing Number": self.billingNumber,
-            "Billing City": self.billingCity,
-            "Billing State": self.billingState,
-            "Billing Zip Code": self.billingZipCode,
+            "BillingStreet": self.billingStreet,
+            "BillingNumber": self.billingNumber,
+            "BillingCity": self.billingCity,
+            "BillingState": self.billingState,
+            "BillingZipCode": self.billingZipCode,
             "user": self.person_id
 
         }
@@ -136,6 +136,6 @@ class Picture(db.Model):
 
     def serialize(self):
         return {
-            "Picture URL": self.picture_url,
-            "product Id": self.photos_id
+            "PictureURL": self.picture_url,
+            "productId": self.photos_id
         }
