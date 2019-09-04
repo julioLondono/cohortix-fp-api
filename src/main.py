@@ -430,6 +430,8 @@ def get_single_picture(picture_id):
         address1 = Picture.query.get(picture_id)
         if address1 is None:
             raise APIException('picture not found', status_code=404)
+        if "PictureURL" in body:
+            address1.picture_url = body["picture_url"]
 
         db.session.commit()
 
