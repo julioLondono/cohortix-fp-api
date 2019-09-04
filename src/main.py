@@ -427,7 +427,7 @@ def get_single_picture(picture_id):
         if body is None:
             raise APIException("You need to specify the request body as a json object", status_code=400)
 
-        address1 = BillingAddress.query.get(picture_id)
+        address1 = Picture.query.get(picture_id)
         if address1 is None:
             raise APIException('picture not found', status_code=404)
 
@@ -437,7 +437,7 @@ def get_single_picture(picture_id):
 
     # GET request
     if request.method == 'GET':
-        address1 = BillingAddress.query.get(picture_id)
+        address1 = Picture.query.get(picture_id)
         if address1 is None:
             raise APIException('picture not found', status_code=404)
         return jsonify(address1.serialize()), 200
